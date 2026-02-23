@@ -1,11 +1,11 @@
 site:
   title: Antwort
-  url: https://rhuss.github.io/antwort.github.io
+  url: https://antwort-dev.github.io
   start_page: antwort::index.adoc
 
 content:
   sources:
-    - url: https://github.com/rhuss/antwort.git
+    - url: https://github.com/antwort-dev/antwort.git
       branches: main
       start_path: docs
 

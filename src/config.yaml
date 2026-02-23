@@ -1,7 +1,7 @@
 site:
   name: Antwort
-  site: 'https://rhuss.github.io'
-  base: '/antwort.github.io'
+  site: 'https://antwort-dev.github.io'
+  base: '/'
   trailingSlash: false
 
 # Default SEO metadata

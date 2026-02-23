@@ -22,8 +22,7 @@ const whenExternalScripts = (items: (() => AstroIntegration) | (() => AstroInteg
   hasExternalScripts ? (Array.isArray(items) ? items.map((item) => item()) : [items()]) : [];
 
 export default defineConfig({
-  site: 'https://rhuss.github.io',
-  base: '/antwort.github.io',
+  site: 'https://antwort-dev.github.io',
   output: 'static',
 
   integrations: [
