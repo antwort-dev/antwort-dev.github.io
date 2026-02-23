@@ -5,8 +5,8 @@ site:
 
 content:
   sources:
-    - url: /Users/rhuss/Development/ai/antwort
-      branches: HEAD
+    - url: https://github.com/rhuss/antwort.git
+      branches: main
       start_path: docs
 
 ui:
