@@ -39,7 +39,7 @@ const metadata = {
     </Fragment>
 
     <Fragment slot="subtitle">
-      The open-source OpenResponses API implementation for production. Any OpenAI SDK works. Sandboxed code execution. Multi-tenant. Kubernetes-native.
+      The most complete open-source OpenResponses API implementation for production. Any OpenAI SDK works. Sandboxed code execution. Multi-tenant. Kubernetes-native. Stateful and stateless workloads.
     </Fragment>
 
     <Fragment slot="image">
@@ -68,25 +68,31 @@ const metadata = {
     id="pillars"
     tagline="Why Antwort"
     title="Built for production AI agents"
-    columns={3}
+    columns={4}
     items={[
       {
         title: 'OpenResponses API',
         description:
-          'The only open-source server-side implementation of the OpenResponses standard. Any OpenAI SDK (Python, Node, Go, Rust) works without modification. No vendor lock-in. No proprietary API to learn.',
+          'The most complete open-source server-side implementation of the OpenResponses standard, covering both stateful and stateless workloads. Any OpenAI SDK (Python, Node, Go, Rust) works without modification.',
         icon: 'tabler:api',
       },
       {
         title: 'Secure by Default',
         description:
-          'Every code execution runs in a gVisor-isolated Kubernetes Pod. Network deny-all by default. mTLS with SPIFFE/SPIRE. Audit logging for every tool call. Security is the architecture, not an option.',
+          'Every code execution runs in a gVisor-isolated Kubernetes Pod. Network deny-all by default. mTLS with SPIFFE/SPIRE. OAuth token exchange for MCP servers and custom REST APIs. Security is the architecture, not an option.',
         icon: 'tabler:shield-lock',
       },
       {
         title: 'Kubernetes Native',
         description:
-          'Deploy with kubectl apply. Scale with HPA. Monitor with Prometheus. Multi-tenant from day one. Designed exclusively for Kubernetes, with no standalone mode.',
+          'Deploy with kubectl apply. Scale with HPA. Designed exclusively for Kubernetes, with no standalone mode. Agent sandbox pods managed by Kubernetes-native CRDs.',
         icon: 'tabler:container',
+      },
+      {
+        title: 'Production Ready',
+        description:
+          'Multi-tenant isolation from day one. Prometheus metrics with OpenTelemetry GenAI conventions. Horizontal scaling. Kustomize overlays for dev, production, and OpenShift environments.',
+        icon: 'tabler:server-bolt',
       },
     ]}
   />
@@ -114,7 +120,7 @@ const metadata = {
       {
         title: 'MCP Tools',
         description:
-          'Model Context Protocol integration with tool discovery, OAuth, and automatic routing. Your agent can use any MCP server.',
+          'Model Context Protocol integration with tool discovery, OAuth token exchange, and automatic routing. Secure access to MCP servers and custom REST APIs via the sandbox.',
         icon: 'tabler:tools',
       },
       {
@@ -126,7 +132,7 @@ const metadata = {
       {
         title: 'Conversation Memory',
         description:
-          'PostgreSQL-backed conversation persistence with response chaining. Full history reconstruction across multi-turn interactions.',
+          'Pluggable conversation persistence with response chaining. Full history reconstruction across multi-turn interactions. PostgreSQL included, with a clean interface for custom backends.',
         icon: 'tabler:database',
       },
       {
@@ -185,15 +191,15 @@ const metadata = {
       {
         title: 'RAG & Knowledge',
         description:
-          'Vector stores with pgvector, document ingestion, and file_search as a built-in tool. Give your agent a knowledge base.',
+          'Pluggable vector stores and embedding providers with file_search as a built-in tool. Document ingestion pipeline with chunking and indexing. Give your agent a knowledge base.',
         icon: 'tabler:books',
         callToAction: { text: 'Coming Soon' },
       },
       {
-        title: 'Proactive Scheduling',
+        title: 'Ambient Agents',
         description:
-          'Cron triggers, webhook triggers, and completion hooks. Your agent scans alerts at 3am and files tickets before you wake up.',
-        icon: 'tabler:clock-bolt',
+          'External triggers via webhooks, cron schedules, and completion hooks. Your agent reacts to events, scans alerts at 3am, and files tickets before you wake up.',
+        icon: 'tabler:antenna-bars-5',
         callToAction: { text: 'Coming Soon' },
       },
       {
@@ -241,7 +247,7 @@ const metadata = {
           <tr class="border-b border-slate-700/50">
             <td class="py-2 px-4">Responses API</td>
             <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
-            <td class="py-2 px-4"><span class="text-amber-400" title="Partial">&#128295; Partial</span></td>
+            <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
             <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
             <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
             <td class="py-2 px-4"><span class="text-amber-400">&#128295;</span></td>
@@ -383,19 +389,25 @@ const metadata = {
     title="Deploy in minutes"
     items={[
       {
-        title: 'Step 1: <span class="font-medium">Deploy</span>',
+        title: 'Step 1: <span class="font-medium">Configure your LLM provider</span>',
         description:
-          'Apply the Kustomize overlay to your cluster: <code class="bg-slate-800 text-accent px-2 py-0.5 rounded text-sm">kubectl apply -k deploy/overlays/dev</code>. Antwort, PostgreSQL, and SearXNG start up automatically.',
+          'Point Antwort at your LLM backend. Set <code class="bg-slate-800 text-accent px-2 py-0.5 rounded text-sm">ANTWORT_PROVIDER_URL</code> to your vLLM, LiteLLM, Ollama, or any OpenAI-compatible endpoint. Works with cloud APIs too (OpenAI, Anthropic).',
+        icon: 'tabler:plug-connected',
+      },
+      {
+        title: 'Step 2: <span class="font-medium">Deploy to Kubernetes</span>',
+        description:
+          'Apply the Kustomize overlay: <code class="bg-slate-800 text-accent px-2 py-0.5 rounded text-sm">kubectl apply -k deploy/overlays/dev</code>. Antwort starts alongside PostgreSQL for conversation memory and SearXNG for web search.',
         icon: 'tabler:package',
       },
       {
-        title: 'Step 2: <span class="font-medium">Send a request</span>',
+        title: 'Step 3: <span class="font-medium">Send a request</span>',
         description:
-          'Use any OpenAI SDK or plain curl: <code class="bg-slate-800 text-accent px-2 py-0.5 rounded text-sm">curl -X POST http://localhost:8080/v1/responses -H "Content-Type: application/json" -d \'{"model":"qwen2.5","input":"Hello"}\'</code>',
+          'Use any OpenAI SDK or plain curl. Your existing client code works without changes: <code class="bg-slate-800 text-accent px-2 py-0.5 rounded text-sm">curl -X POST http://antwort:8080/v1/responses -d \'{"model":"your-model", "input":"Hello"}\'</code>',
         icon: 'tabler:send',
       },
       {
-        title: 'Step 3: <span class="font-medium">Go agentic</span>',
+        title: 'Step 4: <span class="font-medium">Go agentic</span>',
         description:
           'Add tools to your request. Include <code class="bg-slate-800 text-accent px-2 py-0.5 rounded text-sm">"tools": [{"type": "web_search"}]</code> and Antwort handles the agentic loop, calling tools and reasoning until the task is complete.',
         icon: 'tabler:rocket',
