@@ -1,0 +1,432 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import Hero from '~/components/widgets/Hero.astro';
+import Features from '~/components/widgets/Features.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import Headline from '~/components/ui/Headline.astro';
+
+const metadata = {
+  title: 'Antwort - The server-side agentic framework',
+  ignoreTitleTemplate: true,
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Section -->
+
+  <Hero
+    tagline="OpenResponses-compliant &middot; Kubernetes-native"
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Get Started',
+        href: '/docs/antwort/0.1/getting-started.html',
+        icon: 'tabler:rocket',
+      },
+      {
+        text: 'View on GitHub',
+        href: 'https://github.com/rhuss/antwort',
+        target: '_blank',
+        icon: 'tabler:brand-github',
+      },
+    ]}
+  >
+    <Fragment slot="title">
+      The server-side<br /><span class="text-accent">agentic framework.</span>
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      The open-source OpenResponses API implementation for production. Any OpenAI SDK works. Sandboxed code execution. Multi-tenant. Kubernetes-native.
+    </Fragment>
+
+    <Fragment slot="image">
+      <div class="relative m-auto max-w-4xl">
+        <div class="rounded-lg bg-slate-900 border border-slate-700 p-4 sm:p-6 shadow-2xl font-mono text-xs sm:text-sm text-slate-300 overflow-x-auto">
+          <div class="flex items-center gap-2 mb-3 text-slate-500">
+            <span class="w-3 h-3 rounded-full bg-red-500/70"></span>
+            <span class="w-3 h-3 rounded-full bg-yellow-500/70"></span>
+            <span class="w-3 h-3 rounded-full bg-green-500/70"></span>
+            <span class="ml-2 text-xs">terminal</span>
+          </div>
+          <pre class="whitespace-pre-wrap" set:html={`<span class="text-accent">$</span> curl -X POST http://localhost:8080/v1/responses \\
+  -H <span class="text-emerald-400">"Content-Type: application/json"</span> \\
+  -d <span class="text-emerald-400">'{"model": "qwen2.5",
+    "tools": [{"type": "web_search"}],
+    "input": [{"role": "user",
+      "content": "What are the latest AI news?"}]}'</span>`} /></pre>
+        </div>
+      </div>
+    </Fragment>
+  </Hero>
+
+  <!-- Value Pillars -->
+
+  <Features
+    id="pillars"
+    tagline="Why Antwort"
+    title="Built for production AI agents"
+    columns={3}
+    items={[
+      {
+        title: 'OpenResponses API',
+        description:
+          'The only open-source server-side implementation of the OpenResponses standard. Any OpenAI SDK (Python, Node, Go, Rust) works without modification. No vendor lock-in. No proprietary API to learn.',
+        icon: 'tabler:api',
+      },
+      {
+        title: 'Secure by Default',
+        description:
+          'Every code execution runs in a gVisor-isolated Kubernetes Pod. Network deny-all by default. mTLS with SPIFFE/SPIRE. Audit logging for every tool call. Security is the architecture, not an option.',
+        icon: 'tabler:shield-lock',
+      },
+      {
+        title: 'Kubernetes Native',
+        description:
+          'Deploy with kubectl apply. Scale with HPA. Monitor with Prometheus. Multi-tenant from day one. Designed exclusively for Kubernetes, with no standalone mode.',
+        icon: 'tabler:container',
+      },
+    ]}
+  />
+
+  <!-- Implemented Features -->
+
+  <Features
+    id="features"
+    tagline="Features"
+    title="Everything you need for agentic AI"
+    columns={3}
+    items={[
+      {
+        title: 'Agentic Loop',
+        description:
+          'Multi-turn reasoning with concurrent tool execution. Your agent calls tools, gets results, reasons, and calls more tools until the job is done.',
+        icon: 'tabler:refresh',
+      },
+      {
+        title: 'Multi-Provider',
+        description:
+          'vLLM, LiteLLM, Ollama, or any OpenAI-compatible endpoint. Switch providers without changing your client code.',
+        icon: 'tabler:plug-connected',
+      },
+      {
+        title: 'MCP Tools',
+        description:
+          'Model Context Protocol integration with tool discovery, OAuth, and automatic routing. Your agent can use any MCP server.',
+        icon: 'tabler:tools',
+      },
+      {
+        title: 'Multi-Tenant Auth',
+        description:
+          'JWT/OIDC and API key authentication with tenant isolation. Every response is tenant-scoped. No data leaks between users.',
+        icon: 'tabler:users',
+      },
+      {
+        title: 'Conversation Memory',
+        description:
+          'PostgreSQL-backed conversation persistence with response chaining. Full history reconstruction across multi-turn interactions.',
+        icon: 'tabler:database',
+      },
+      {
+        title: 'SSE Streaming',
+        description:
+          'Server-Sent Events with proper lifecycle events. Watch your agent think, call tools, and respond in real time.',
+        icon: 'tabler:live-photo',
+      },
+      {
+        title: 'Built-in Web Search',
+        description:
+          'SearXNG integration for current information retrieval. Your agent can search the web as part of its reasoning.',
+        icon: 'tabler:world-search',
+      },
+      {
+        title: 'Observability',
+        description:
+          'Prometheus metrics for request latency, token usage, tool execution, and streaming connections. OpenTelemetry GenAI conventions.',
+        icon: 'tabler:chart-bar',
+      },
+      {
+        title: 'Production Deployment',
+        description:
+          'Kustomize overlays for dev, production, and OpenShift. Health checks, graceful shutdown, and configurable resource limits.',
+        icon: 'tabler:server',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features>
+
+  <!-- Roadmap Features -->
+
+  <Features
+    tagline="Roadmap"
+    title="What we are building"
+    subtitle="Bringing server-side agentic capabilities to Kubernetes, with enterprise-grade security."
+    columns={3}
+    items={[
+      {
+        title: 'Sandbox Execution',
+        description:
+          'Code runs in Kubernetes, not on your laptop. Every code_interpreter call executes in a gVisor-isolated Pod with network deny-all and audit logging.',
+        icon: 'tabler:container',
+        callToAction: { text: 'Coming Soon' },
+      },
+      {
+        title: 'Agent Profiles',
+        description:
+          'Server-side SOUL.md. Reusable agent configurations with instructions, tools, model preferences, and sandbox policies. Manage agents centrally.',
+        icon: 'tabler:user-cog',
+        callToAction: { text: 'Coming Soon' },
+      },
+      {
+        title: 'RAG & Knowledge',
+        description:
+          'Vector stores with pgvector, document ingestion, and file_search as a built-in tool. Give your agent a knowledge base.',
+        icon: 'tabler:books',
+        callToAction: { text: 'Coming Soon' },
+      },
+      {
+        title: 'Proactive Scheduling',
+        description:
+          'Cron triggers, webhook triggers, and completion hooks. Your agent scans alerts at 3am and files tickets before you wake up.',
+        icon: 'tabler:clock-bolt',
+        callToAction: { text: 'Coming Soon' },
+      },
+      {
+        title: 'Delivery Channels',
+        description:
+          'Push agent output to Slack, Teams, email, or webhooks. Combined with scheduling, agents become autonomous workers.',
+        icon: 'tabler:send',
+        callToAction: { text: 'Coming Soon' },
+      },
+      {
+        title: 'Tool Registry',
+        description:
+          'Curated, security-audited tool catalog with per-tenant permissions. MCP servers registered with allowlists and audit trails.',
+        icon: 'tabler:archive',
+        callToAction: { text: 'Coming Soon' },
+      },
+    ]}
+  />
+
+  <!-- Comparison Table -->
+
+  <WidgetWrapper id="comparison" containerClass="max-w-7xl">
+    <Headline
+      tagline="How It Compares"
+      title="Feature comparison"
+      subtitle="See how Antwort stacks up against other agentic AI platforms."
+    />
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm text-left border-collapse">
+        <thead>
+          <tr class="border-b border-slate-700">
+            <th class="py-3 px-4 font-semibold text-muted"></th>
+            <th class="py-3 px-4 font-bold text-accent">Antwort</th>
+            <th class="py-3 px-4 font-semibold">LlamaStack</th>
+            <th class="py-3 px-4 font-semibold">OpenClaw</th>
+            <th class="py-3 px-4 font-semibold">LangGraph Platform</th>
+            <th class="py-3 px-4 font-semibold">Manual K8s</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- API & Protocol -->
+          <tr>
+            <td colspan="6" class="pt-6 pb-2 px-4 font-bold text-xs uppercase tracking-wider text-muted">API & Protocol</td>
+          </tr>
+          <tr class="border-b border-slate-700/50">
+            <td class="py-2 px-4">Responses API</td>
+            <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
+            <td class="py-2 px-4"><span class="text-amber-400" title="Partial">&#128295; Partial</span></td>
+            <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
+            <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
+            <td class="py-2 px-4"><span class="text-amber-400">&#128295;</span></td>
+          </tr>
+          <tr class="border-b border-slate-700/50">
+            <td class="py-2 px-4">Chat Completions</td>
+            <td class="py-2 px-4"><span class="text-green-400">&#10003; Via provider</span></td>
+            <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
+            <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
+            <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
+            <td class="py-2 px-4"><span class="text-amber-400">&#128295;</span></td>
+          </tr>
+          <tr class="border-b border-slate-700/50">
+            <td class="py-2 px-4">OpenAI SDK compatible</td>
+            <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
+            <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
+            <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
+            <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
+            <td class="py-2 px-4"><span class="text-amber-400">&#128295;</span></td>
+          </tr>
+          <tr class="border-b border-slate-700/50">
+            <td class="py-2 px-4">Streaming (SSE)</td>
+            <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
+            <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
+            <td class="py-2 px-4"><span class="text-green-400">&#10003; WebSocket</span></td>
+            <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
+            <td class="py-2 px-4"><span class="text-amber-400">&#128295;</span></td>
+          </tr>
+
+          <!-- Agentic Capabilities -->
+          <tr>
+            <td colspan="6" class="pt-6 pb-2 px-4 font-bold text-xs uppercase tracking-wider text-muted">Agentic Capabilities</td>
+          </tr>
+          <tr class="border-b border-slate-700/50">
+            <td class="py-2 px-4">Agentic loop</td>
+            <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
+            <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
+            <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
+            <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
+            <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
+          </tr>
+          <tr class="border-b border-slate-700/50">
+            <td class="py-2 px-4">MCP tools</td>
+            <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
+            <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
+            <td class="py-2 px-4"><span class="text-amber-400">&#128295; Bridge</span></td>
+            <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
+            <td class="py-2 px-4"><span class="text-amber-400">&#128295;</span></td>
+          </tr>
+          <tr class="border-b border-slate-700/50">
+            <td class="py-2 px-4">Code execution sandbox</td>
+            <td class="py-2 px-4"><span class="text-cyan-400" title="Coming soon">&#128284; Coming soon</span></td>
+            <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
+            <td class="py-2 px-4"><span class="text-red-400">&#10007; Off by default</span></td>
+            <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
+            <td class="py-2 px-4"><span class="text-amber-400">&#128295;</span></td>
+          </tr>
+          <tr class="border-b border-slate-700/50">
+            <td class="py-2 px-4">RAG / file_search</td>
+            <td class="py-2 px-4"><span class="text-cyan-400" title="Coming soon">&#128284; Coming soon</span></td>
+            <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
+            <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
+            <td class="py-2 px-4"><span class="text-amber-400">&#128295;</span></td>
+            <td class="py-2 px-4"><span class="text-amber-400">&#128295;</span></td>
+          </tr>
+          <tr class="border-b border-slate-700/50">
+            <td class="py-2 px-4">Safety / guardrails</td>
+            <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
+            <td class="py-2 px-4"><span class="text-green-400">&#10003; Llama Guard</span></td>
+            <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
+            <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
+            <td class="py-2 px-4"><span class="text-amber-400">&#128295;</span></td>
+          </tr>
+
+          <!-- Security & Operations -->
+          <tr>
+            <td colspan="6" class="pt-6 pb-2 px-4 font-bold text-xs uppercase tracking-wider text-muted">Security & Operations</td>
+          </tr>
+          <tr class="border-b border-slate-700/50">
+            <td class="py-2 px-4">Sandbox by default</td>
+            <td class="py-2 px-4"><span class="text-green-400">&#10003; Always</span></td>
+            <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
+            <td class="py-2 px-4"><span class="text-red-400">&#10007; Off</span></td>
+            <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
+            <td class="py-2 px-4"><span class="text-amber-400">&#128295;</span></td>
+          </tr>
+          <tr class="border-b border-slate-700/50">
+            <td class="py-2 px-4">Multi-tenant</td>
+            <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
+            <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
+            <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
+            <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
+            <td class="py-2 px-4"><span class="text-amber-400">&#128295;</span></td>
+          </tr>
+          <tr class="border-b border-slate-700/50">
+            <td class="py-2 px-4">Kubernetes native</td>
+            <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
+            <td class="py-2 px-4"><span class="text-green-400">&#10003; Operator</span></td>
+            <td class="py-2 px-4"><span class="text-red-400">&#10007; Docker</span></td>
+            <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
+            <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
+          </tr>
+          <tr class="border-b border-slate-700/50">
+            <td class="py-2 px-4">Observability</td>
+            <td class="py-2 px-4"><span class="text-green-400">&#10003; Prometheus</span></td>
+            <td class="py-2 px-4"><span class="text-amber-400">&#128295;</span></td>
+            <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
+            <td class="py-2 px-4"><span class="text-green-400">&#10003; LangSmith</span></td>
+            <td class="py-2 px-4"><span class="text-amber-400">&#128295;</span></td>
+          </tr>
+          <tr class="border-b border-slate-700/50">
+            <td class="py-2 px-4">Provider agnostic</td>
+            <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
+            <td class="py-2 px-4"><span class="text-green-400">&#10003; 15+</span></td>
+            <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
+            <td class="py-2 px-4"><span class="text-red-400">&#10007; LangChain</span></td>
+            <td class="py-2 px-4"><span class="text-amber-400">&#128295;</span></td>
+          </tr>
+          <tr class="border-b border-slate-700/50">
+            <td class="py-2 px-4">Open source</td>
+            <td class="py-2 px-4"><span class="text-green-400">&#10003; Apache 2.0</span></td>
+            <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
+            <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
+            <td class="py-2 px-4"><span class="text-red-400">&#10007; Commercial*</span></td>
+            <td class="py-2 px-4"><span class="text-muted">N/A</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="text-xs text-muted mt-4 px-4">
+      * LangGraph library is MIT; LangGraph Platform requires a commercial license for self-hosting. Last updated: February 2026.
+    </p>
+  </WidgetWrapper>
+
+  <!-- Quickstart Steps -->
+
+  <Steps
+    tagline="Get Started"
+    title="Deploy in minutes"
+    items={[
+      {
+        title: 'Step 1: <span class="font-medium">Deploy</span>',
+        description:
+          'Apply the Kustomize overlay to your cluster: <code class="bg-slate-800 text-accent px-2 py-0.5 rounded text-sm">kubectl apply -k deploy/overlays/dev</code>. Antwort, PostgreSQL, and SearXNG start up automatically.',
+        icon: 'tabler:package',
+      },
+      {
+        title: 'Step 2: <span class="font-medium">Send a request</span>',
+        description:
+          'Use any OpenAI SDK or plain curl: <code class="bg-slate-800 text-accent px-2 py-0.5 rounded text-sm">curl -X POST http://localhost:8080/v1/responses -H "Content-Type: application/json" -d \'{"model":"qwen2.5","input":"Hello"}\'</code>',
+        icon: 'tabler:send',
+      },
+      {
+        title: 'Step 3: <span class="font-medium">Go agentic</span>',
+        description:
+          'Add tools to your request. Include <code class="bg-slate-800 text-accent px-2 py-0.5 rounded text-sm">"tools": [{"type": "web_search"}]</code> and Antwort handles the agentic loop, calling tools and reasoning until the task is complete.',
+        icon: 'tabler:rocket',
+      },
+    ]}
+  />
+
+  <!-- Call to Action -->
+
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Get Started',
+        href: '/docs/antwort/0.1/getting-started.html',
+        icon: 'tabler:rocket',
+      },
+      {
+        text: 'View on GitHub',
+        href: 'https://github.com/rhuss/antwort',
+        target: '_blank',
+        icon: 'tabler:brand-github',
+      },
+    ]}
+  >
+    <Fragment slot="title">
+      Ready to deploy agentic AI?
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      Open source. Apache 2.0. Any OpenAI SDK works.
+    </Fragment>
+  </CallToAction>
+</Layout>

@@ -16,4 +16,4 @@ ui:
   supplemental_files: ./supplemental-ui
 
 output:
-  dir: ./build/site/docs
+  dir: ./dist/docs

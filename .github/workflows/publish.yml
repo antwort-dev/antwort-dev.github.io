@@ -28,6 +28,12 @@ jobs:
         with:
           node-version: '22'
 
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Astro landing page
+        run: npm run build
+
       - name: Install Antora
         run: npm i antora @antora/lunr-extension
 
@@ -36,15 +42,8 @@ jobs:
         env:
           ANTORA_CACHE_DIR: .cache/antora
 
-      - name: Assemble site
-        run: |
-          mkdir -p build/site
-          cp index.html build/site/
-          cp -r assets build/site/
-          cp .nojekyll build/site/
-
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build/site
+          publish_dir: ./dist

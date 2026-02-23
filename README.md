@@ -2,70 +2,50 @@
 
 Landing page and documentation site for [Antwort](https://github.com/rhuss/antwort), the server-side agentic framework.
 
-## Structure
+## Architecture
 
-```
-index.html              Landing page
-assets/
-  css/landing.css       Landing page styles
-  img/                  Logo SVGs, favicon, OG image
-  js/landing.js         Progressive enhancement (copy buttons, scroll effects)
-supplemental-ui/
-  css/custom.css        Antora dark theme overrides
-antora-playbook.yml     Antora documentation build configuration
-.github/workflows/
-  publish.yml           GitHub Actions: build + deploy
-```
+- **Landing page**: Built with [Astro](https://astro.build) using the [AstroWind](https://github.com/onwidget/astrowind) template. Dark theme with cyan-teal accents.
+- **Documentation**: Built with [Antora](https://antora.org) from AsciiDoc sources in the main [antwort](https://github.com/rhuss/antwort) repo.
+- **Deployment**: GitHub Actions builds both, merges output, deploys to GitHub Pages.
 
 ## Local Development
 
 ### Landing Page
 
-Open `index.html` directly in a browser. No build step required.
-
-### Documentation
-
-The documentation is built by Antora from AsciiDoc sources in the main [antwort](https://github.com/rhuss/antwort) repo.
-
-To build locally:
-
 ```bash
-# Install Antora
-npm i antora @antora/lunr-extension
-
-# Build (requires the antwort repo to be cloned locally)
-npx antora antora-playbook.yml
-
-# The docs are generated in build/site/docs/
+npm install
+npm run dev     # Dev server at http://localhost:4321
 ```
 
-Note: The `antora-playbook.yml` references the local path to the antwort repo for development. The GitHub Actions workflow uses the remote URL.
+### Full Build (Landing Page + Docs)
+
+```bash
+npm run build                              # Astro -> dist/
+npm i antora @antora/lunr-extension        # Install Antora (first time)
+npx antora antora-playbook.yml             # Antora -> dist/docs/
+```
+
+Then open `dist/index.html` in a browser.
 
 ## Updating Content
 
 ### Landing Page
 
-Edit `index.html` and `assets/css/landing.css` directly. Push to `main` to deploy.
+Edit `src/pages/index.astro`. The page composes AstroWind widgets (Hero, Features, Steps, CallToAction) with Antwort content passed as props.
 
 ### Documentation
 
-Documentation sources live in the main `antwort` repository under `docs/modules/ROOT/pages/`. Edit the AsciiDoc files there, then either:
+Edit AsciiDoc files in the main `antwort` repo under `docs/modules/ROOT/pages/`. Add new pages to `docs/modules/ROOT/nav.adoc`.
 
-1. Wait for the scheduled rebuild, or
-2. Trigger a manual rebuild via `workflow_dispatch`
+## Structure
 
-### Adding a New Doc Page
-
-1. Create `docs/modules/ROOT/pages/your-page.adoc` in the main repo
-2. Add a `xref:your-page.adoc[Title]` entry to `docs/modules/ROOT/nav.adoc`
-3. Push to the main repo
-
-## Deployment
-
-The site deploys automatically via GitHub Actions when changes are pushed to `main`. The workflow:
-
-1. Builds the Antora documentation from the main repo
-2. Copies the landing page and assets to the build output
-3. Deploys everything to the `gh-pages` branch
-
-GitHub Pages serves the site from the `gh-pages` branch.
+```
+src/pages/index.astro          Landing page content
+src/components/Logo.astro      A! logo component
+src/assets/images/             Logo SVGs
+src/config.yaml                Site configuration
+src/navigation.ts              Header/footer navigation
+antora-playbook.yml            Antora build configuration
+supplemental-ui/css/           Antora dark theme overrides
+.github/workflows/publish.yml  CI/CD pipeline
+```

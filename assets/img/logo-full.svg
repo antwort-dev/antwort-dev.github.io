@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 64">
-  <!-- A! mark in circle -->
-  <circle cx="32" cy="32" r="29" stroke="#00e5c0" stroke-width="2" fill="none"/>
-  <text x="32" y="32" font-family="Inter, Arial, sans-serif" font-weight="700" font-size="28" fill="#e0e6ed" text-anchor="middle" dominant-baseline="central">A!</text>
-  <!-- Wordmark -->
-  <text x="76" y="32" font-family="Inter, Arial, sans-serif" font-weight="600" font-size="30" letter-spacing="-0.02em" fill="#e0e6ed" dominant-baseline="central">antwort</text>
-</svg>
