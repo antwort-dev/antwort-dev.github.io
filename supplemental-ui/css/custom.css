@@ -1,0 +1,452 @@
+/* Antwort Dark Theme Override for Antora UI */
+/* Matches the landing page dark theme */
+
+/* ============================================
+   Color Palette
+   ============================================
+   Background (body):   #0a0e14
+   Background (cards):  #111a27
+   Text (primary):      #e0e6ed
+   Text (secondary):    #7a8a9a
+   Accent/links:        #00e5c0
+   Code background:     #0d1520
+   Code text:           #00e5c0
+   Borders:             #1a2a3a
+   ============================================ */
+
+/* ----- Base ----- */
+
+body {
+  background-color: #0a0e14 !important;
+  color: #e0e6ed !important;
+}
+
+/* ----- Document Content ----- */
+
+.doc {
+  color: #e0e6ed !important;
+}
+
+.doc p,
+.doc li,
+.doc td,
+.doc dd,
+.doc dt {
+  color: #e0e6ed !important;
+}
+
+.doc h1,
+.doc h2,
+.doc h3,
+.doc h4,
+.doc h5,
+.doc h6 {
+  color: #e0e6ed !important;
+}
+
+.doc h1 {
+  border-bottom-color: #1a2a3a !important;
+}
+
+/* ----- Links ----- */
+
+a {
+  color: #00e5c0 !important;
+}
+
+a:hover {
+  color: #33ebd0 !important;
+}
+
+.doc a {
+  color: #00e5c0 !important;
+}
+
+.doc a:hover {
+  color: #33ebd0 !important;
+}
+
+/* ----- Navigation Sidebar ----- */
+
+.nav-panel-explore,
+.nav-panel-menu {
+  background-color: #111a27 !important;
+}
+
+.navigation-explore {
+  background-color: #111a27 !important;
+}
+
+.nav-container {
+  background-color: #111a27 !important;
+}
+
+.nav-item a {
+  color: #7a8a9a !important;
+}
+
+.nav-item a:hover {
+  color: #00e5c0 !important;
+}
+
+.nav-item.is-active > a {
+  color: #00e5c0 !important;
+  background-color: rgba(0, 229, 192, 0.08) !important;
+}
+
+.nav-item.is-active > a::before {
+  background-color: #00e5c0 !important;
+}
+
+.nav-text {
+  color: #e0e6ed !important;
+}
+
+.nav-list .nav-item[data-depth="0"] > a,
+.nav-list .nav-item[data-depth="0"] > .nav-text {
+  color: #e0e6ed !important;
+  font-weight: 600;
+}
+
+.nav-panel-explore .context .title,
+.nav-panel-explore .context .version {
+  color: #e0e6ed !important;
+}
+
+.nav-panel-explore .context {
+  background-color: #0d1520 !important;
+  border-color: #1a2a3a !important;
+}
+
+/* ----- Toolbar ----- */
+
+.toolbar {
+  background-color: #111a27 !important;
+  border-bottom-color: #1a2a3a !important;
+}
+
+.toolbar a {
+  color: #7a8a9a !important;
+}
+
+.toolbar a:hover {
+  color: #00e5c0 !important;
+}
+
+/* ----- Page Versions ----- */
+
+.page-versions {
+  background-color: #111a27 !important;
+  border-color: #1a2a3a !important;
+}
+
+.page-versions .version {
+  color: #7a8a9a !important;
+}
+
+.page-versions .version.is-current {
+  color: #00e5c0 !important;
+  font-weight: 600;
+}
+
+.page-versions a {
+  color: #7a8a9a !important;
+}
+
+/* ----- Code Blocks ----- */
+
+code {
+  background-color: #0d1520 !important;
+  color: #00e5c0 !important;
+  border-radius: 3px;
+}
+
+pre {
+  background-color: #0d1520 !important;
+  color: #e0e6ed !important;
+  border: 1px solid #1a2a3a !important;
+}
+
+pre code {
+  background-color: transparent !important;
+  color: #e0e6ed !important;
+}
+
+.doc .listingblock pre {
+  background-color: #0d1520 !important;
+}
+
+.doc .literalblock pre {
+  background-color: #0d1520 !important;
+}
+
+.highlight {
+  background-color: #0d1520 !important;
+}
+
+/* Code syntax highlighting adjustments for dark theme */
+.highlight .tok-kw,
+.highlight .tok-k {
+  color: #c678dd !important;
+}
+
+.highlight .tok-s,
+.highlight .tok-s2 {
+  color: #98c379 !important;
+}
+
+.highlight .tok-c,
+.highlight .tok-cm,
+.highlight .tok-c1 {
+  color: #5c6370 !important;
+}
+
+.highlight .tok-nb,
+.highlight .tok-n {
+  color: #e0e6ed !important;
+}
+
+/* ----- Tables ----- */
+
+.doc table {
+  border-color: #1a2a3a !important;
+}
+
+.doc table th {
+  background-color: #111a27 !important;
+  color: #e0e6ed !important;
+  border-color: #1a2a3a !important;
+}
+
+.doc table td {
+  border-color: #1a2a3a !important;
+  background-color: transparent !important;
+}
+
+.doc table tr:nth-child(even) td {
+  background-color: rgba(17, 26, 39, 0.4) !important;
+}
+
+.doc table thead th {
+  border-bottom-color: #1a2a3a !important;
+}
+
+/* ----- Admonition Blocks ----- */
+
+.doc .admonitionblock {
+  background-color: #111a27 !important;
+  border-color: #1a2a3a !important;
+}
+
+.doc .admonitionblock td.content {
+  color: #e0e6ed !important;
+  background-color: #111a27 !important;
+  border-color: #1a2a3a !important;
+}
+
+.doc .admonitionblock td.icon {
+  background-color: #111a27 !important;
+}
+
+.doc .admonitionblock.note {
+  background-color: rgba(0, 229, 192, 0.05) !important;
+}
+
+.doc .admonitionblock.tip {
+  background-color: rgba(0, 229, 192, 0.05) !important;
+}
+
+.doc .admonitionblock.warning {
+  background-color: rgba(255, 170, 50, 0.08) !important;
+}
+
+.doc .admonitionblock.caution {
+  background-color: rgba(255, 100, 80, 0.08) !important;
+}
+
+.doc .admonitionblock.important {
+  background-color: rgba(255, 100, 80, 0.08) !important;
+}
+
+/* ----- Sidebar / Aside Blocks ----- */
+
+.doc .sidebarblock {
+  background-color: #111a27 !important;
+  border-color: #1a2a3a !important;
+}
+
+/* ----- Example / Quote Blocks ----- */
+
+.doc .exampleblock,
+.doc .quoteblock {
+  background-color: #111a27 !important;
+  border-color: #1a2a3a !important;
+}
+
+.doc .quoteblock blockquote {
+  color: #7a8a9a !important;
+}
+
+/* ----- Breadcrumbs ----- */
+
+.breadcrumbs {
+  background-color: transparent !important;
+}
+
+.breadcrumbs a {
+  color: #7a8a9a !important;
+}
+
+.breadcrumbs a:hover {
+  color: #00e5c0 !important;
+}
+
+.breadcrumbs li::after {
+  color: #7a8a9a !important;
+}
+
+/* ----- Article / Content Area ----- */
+
+.article {
+  background-color: #0a0e14 !important;
+}
+
+.doc .paragraph.lead p {
+  color: #7a8a9a !important;
+}
+
+/* ----- TOC (Table of Contents) Sidebar ----- */
+
+.toc {
+  background-color: transparent !important;
+  border-left-color: #1a2a3a !important;
+}
+
+.toc .toc-menu a {
+  color: #7a8a9a !important;
+}
+
+.toc .toc-menu a:hover {
+  color: #00e5c0 !important;
+}
+
+.toc .toc-menu a.is-active {
+  color: #00e5c0 !important;
+}
+
+.toc-menu h3 {
+  color: #e0e6ed !important;
+}
+
+/* ----- Footer ----- */
+
+.footer {
+  background-color: #111a27 !important;
+  color: #7a8a9a !important;
+  border-top-color: #1a2a3a !important;
+}
+
+.footer a {
+  color: #00e5c0 !important;
+}
+
+.footer p {
+  color: #7a8a9a !important;
+}
+
+/* ----- Selection ----- */
+
+::selection {
+  background-color: rgba(0, 229, 192, 0.3) !important;
+  color: #e0e6ed !important;
+}
+
+::-moz-selection {
+  background-color: rgba(0, 229, 192, 0.3) !important;
+  color: #e0e6ed !important;
+}
+
+/* ----- Scrollbar (Webkit) ----- */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0e14;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1a2a3a;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2a3a4a;
+}
+
+/* ----- Search ----- */
+
+.search-input {
+  background-color: #0d1520 !important;
+  color: #e0e6ed !important;
+  border-color: #1a2a3a !important;
+}
+
+.search-input::placeholder {
+  color: #7a8a9a !important;
+}
+
+.search-result-highlight {
+  background-color: rgba(0, 229, 192, 0.2) !important;
+}
+
+/* ----- Misc Elements ----- */
+
+hr {
+  border-color: #1a2a3a !important;
+}
+
+.doc .dlist dt {
+  color: #e0e6ed !important;
+  font-weight: 600;
+}
+
+.doc .colist td {
+  color: #e0e6ed !important;
+}
+
+.doc .conum[data-value] {
+  background-color: #00e5c0 !important;
+  color: #0a0e14 !important;
+}
+
+/* ----- Header / Top Bar ----- */
+
+.header {
+  background-color: #111a27 !important;
+  border-bottom-color: #1a2a3a !important;
+}
+
+.header a {
+  color: #e0e6ed !important;
+}
+
+.header .component-name {
+  color: #e0e6ed !important;
+}
+
+/* ----- Body Element Overrides ----- */
+
+.body {
+  background-color: #0a0e14 !important;
+}
+
+.main {
+  background-color: #0a0e14 !important;
+}
+
+#content {
+  background-color: #0a0e14 !important;
+}

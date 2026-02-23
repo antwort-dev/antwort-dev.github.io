@@ -1,0 +1,50 @@
+name: Publish Site
+
+on:
+  push:
+    branches: [main]
+  repository_dispatch:
+    types: [docs-updated]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout website repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install Antora
+        run: npm i antora @antora/lunr-extension
+
+      - name: Build Antora docs
+        run: npx antora antora-playbook.yml
+        env:
+          ANTORA_CACHE_DIR: .cache/antora
+
+      - name: Assemble site
+        run: |
+          mkdir -p build/site
+          cp index.html build/site/
+          cp -r assets build/site/
+          cp .nojekyll build/site/
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build/site

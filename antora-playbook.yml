@@ -1,0 +1,19 @@
+site:
+  title: Antwort
+  url: https://antwort.github.io
+  start_page: antwort::index.adoc
+
+content:
+  sources:
+    - url: /Users/rhuss/Development/ai/antwort
+      branches: HEAD
+      start_path: docs
+
+ui:
+  bundle:
+    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
+    snapshot: true
+  supplemental_files: ./supplemental-ui
+
+output:
+  dir: ./build/site/docs
