@@ -68,7 +68,7 @@ const metadata = {
     id="pillars"
     tagline="Why Antwort"
     title="Built for production AI agents"
-    columns={4}
+    columns={2}
     items={[
       {
         title: 'OpenResponses API',
@@ -236,13 +236,12 @@ const metadata = {
             <th class="py-3 px-4 font-semibold">LlamaStack</th>
             <th class="py-3 px-4 font-semibold">OpenClaw</th>
             <th class="py-3 px-4 font-semibold">LangGraph Platform</th>
-            <th class="py-3 px-4 font-semibold">Manual K8s</th>
           </tr>
         </thead>
         <tbody>
           <!-- API & Protocol -->
           <tr>
-            <td colspan="6" class="pt-6 pb-2 px-4 font-bold text-xs uppercase tracking-wider text-muted">API & Protocol</td>
+            <td colspan="5" class="pt-6 pb-2 px-4 font-bold text-xs uppercase tracking-wider text-muted">API & Protocol</td>
           </tr>
           <tr class="border-b border-slate-700/50">
             <td class="py-2 px-4">Responses API</td>
@@ -250,7 +249,6 @@ const metadata = {
             <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
             <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
             <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
-            <td class="py-2 px-4"><span class="text-amber-400">&#128295;</span></td>
           </tr>
           <tr class="border-b border-slate-700/50">
             <td class="py-2 px-4">Chat Completions</td>
@@ -258,7 +256,6 @@ const metadata = {
             <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
             <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
             <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
-            <td class="py-2 px-4"><span class="text-amber-400">&#128295;</span></td>
           </tr>
           <tr class="border-b border-slate-700/50">
             <td class="py-2 px-4">OpenAI SDK compatible</td>
@@ -266,7 +263,6 @@ const metadata = {
             <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
             <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
             <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
-            <td class="py-2 px-4"><span class="text-amber-400">&#128295;</span></td>
           </tr>
           <tr class="border-b border-slate-700/50">
             <td class="py-2 px-4">Streaming (SSE)</td>
@@ -274,12 +270,11 @@ const metadata = {
             <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
             <td class="py-2 px-4"><span class="text-green-400">&#10003; WebSocket</span></td>
             <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
-            <td class="py-2 px-4"><span class="text-amber-400">&#128295;</span></td>
           </tr>
 
           <!-- Agentic Capabilities -->
           <tr>
-            <td colspan="6" class="pt-6 pb-2 px-4 font-bold text-xs uppercase tracking-wider text-muted">Agentic Capabilities</td>
+            <td colspan="5" class="pt-6 pb-2 px-4 font-bold text-xs uppercase tracking-wider text-muted">Agentic Capabilities</td>
           </tr>
           <tr class="border-b border-slate-700/50">
             <td class="py-2 px-4">Agentic loop</td>
@@ -287,7 +282,6 @@ const metadata = {
             <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
             <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
             <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
-            <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
           </tr>
           <tr class="border-b border-slate-700/50">
             <td class="py-2 px-4">MCP tools</td>
@@ -295,7 +289,6 @@ const metadata = {
             <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
             <td class="py-2 px-4"><span class="text-amber-400">&#128295; Bridge</span></td>
             <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
-            <td class="py-2 px-4"><span class="text-amber-400">&#128295;</span></td>
           </tr>
           <tr class="border-b border-slate-700/50">
             <td class="py-2 px-4">Code execution sandbox</td>
@@ -303,14 +296,12 @@ const metadata = {
             <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
             <td class="py-2 px-4"><span class="text-red-400">&#10007; Off by default</span></td>
             <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
-            <td class="py-2 px-4"><span class="text-amber-400">&#128295;</span></td>
           </tr>
           <tr class="border-b border-slate-700/50">
             <td class="py-2 px-4">RAG / file_search</td>
             <td class="py-2 px-4"><span class="text-cyan-400" title="Coming soon">&#128284; Coming soon</span></td>
             <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
             <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
-            <td class="py-2 px-4"><span class="text-amber-400">&#128295;</span></td>
             <td class="py-2 px-4"><span class="text-amber-400">&#128295;</span></td>
           </tr>
           <tr class="border-b border-slate-700/50">
@@ -319,12 +310,11 @@ const metadata = {
             <td class="py-2 px-4"><span class="text-green-400">&#10003; Llama Guard</span></td>
             <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
             <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
-            <td class="py-2 px-4"><span class="text-amber-400">&#128295;</span></td>
           </tr>
 
           <!-- Security & Operations -->
           <tr>
-            <td colspan="6" class="pt-6 pb-2 px-4 font-bold text-xs uppercase tracking-wider text-muted">Security & Operations</td>
+            <td colspan="5" class="pt-6 pb-2 px-4 font-bold text-xs uppercase tracking-wider text-muted">Security & Operations</td>
           </tr>
           <tr class="border-b border-slate-700/50">
             <td class="py-2 px-4">Sandbox by default</td>
@@ -332,7 +322,6 @@ const metadata = {
             <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
             <td class="py-2 px-4"><span class="text-red-400">&#10007; Off</span></td>
             <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
-            <td class="py-2 px-4"><span class="text-amber-400">&#128295;</span></td>
           </tr>
           <tr class="border-b border-slate-700/50">
             <td class="py-2 px-4">Multi-tenant</td>
@@ -340,7 +329,6 @@ const metadata = {
             <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
             <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
             <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
-            <td class="py-2 px-4"><span class="text-amber-400">&#128295;</span></td>
           </tr>
           <tr class="border-b border-slate-700/50">
             <td class="py-2 px-4">Kubernetes native</td>
@@ -348,7 +336,6 @@ const metadata = {
             <td class="py-2 px-4"><span class="text-green-400">&#10003; Operator</span></td>
             <td class="py-2 px-4"><span class="text-red-400">&#10007; Docker</span></td>
             <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
-            <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
           </tr>
           <tr class="border-b border-slate-700/50">
             <td class="py-2 px-4">Observability</td>
@@ -356,7 +343,6 @@ const metadata = {
             <td class="py-2 px-4"><span class="text-amber-400">&#128295;</span></td>
             <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
             <td class="py-2 px-4"><span class="text-green-400">&#10003; LangSmith</span></td>
-            <td class="py-2 px-4"><span class="text-amber-400">&#128295;</span></td>
           </tr>
           <tr class="border-b border-slate-700/50">
             <td class="py-2 px-4">Provider agnostic</td>
@@ -364,7 +350,6 @@ const metadata = {
             <td class="py-2 px-4"><span class="text-green-400">&#10003; 15+</span></td>
             <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
             <td class="py-2 px-4"><span class="text-red-400">&#10007; LangChain</span></td>
-            <td class="py-2 px-4"><span class="text-amber-400">&#128295;</span></td>
           </tr>
           <tr class="border-b border-slate-700/50">
             <td class="py-2 px-4">Open source</td>
@@ -372,7 +357,6 @@ const metadata = {
             <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
             <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
             <td class="py-2 px-4"><span class="text-red-400">&#10007; Commercial*</span></td>
-            <td class="py-2 px-4"><span class="text-muted">N/A</span></td>
           </tr>
         </tbody>
       </table>
