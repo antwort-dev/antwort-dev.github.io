@@ -124,10 +124,16 @@ const metadata = {
         icon: 'tabler:tools',
       },
       {
-        title: 'Multi-Tenant Auth',
+        title: 'Multi-User Isolation',
         description:
-          'JWT/OIDC and API key authentication with tenant isolation. Every response is tenant-scoped. No data leaks between users.',
+          'JWT/OIDC and API key authentication with per-user isolation within a single instance. Every response is user-scoped. No data leaks between users.',
         icon: 'tabler:users',
+      },
+      {
+        title: 'Multi-Tenant',
+        description:
+          'Run multiple Antwort instances in a single Kubernetes cluster for isolated tenant groups. Each tenant gets its own configuration, storage, and provider settings.',
+        icon: 'tabler:building',
       },
       {
         title: 'Conversation Memory',
@@ -214,6 +220,13 @@ const metadata = {
         description:
           'Curated, security-audited tool catalog with per-tenant permissions. MCP servers registered with allowlists and audit trails.',
         icon: 'tabler:archive',
+        callToAction: { text: 'Coming Soon' },
+      },
+      {
+        title: 'Kubernetes Operator',
+        description:
+          'A dedicated operator for seamless installation and lifecycle management. Declarative CRDs for agent configurations, sandbox policies, and multi-tenant deployments.',
+        icon: 'tabler:settings-automation',
         callToAction: { text: 'Coming Soon' },
       },
     ]}
