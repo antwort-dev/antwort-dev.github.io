@@ -1,6 +1,6 @@
 site:
   title: Antwort
-  url: https://antwort.github.io
+  url: https://rhuss.github.io/antwort.github.io
   start_page: antwort::index.adoc
 
 content:
