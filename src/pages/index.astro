@@ -114,7 +114,7 @@ const metadata = {
       {
         title: 'Multi-Provider',
         description:
-          'vLLM, LiteLLM, Ollama, or any OpenAI-compatible endpoint. Switch providers without changing your client code.',
+          'vLLM (Chat Completions or native Responses API), LiteLLM, Ollama, or any OpenAI-compatible endpoint. Switch providers without changing your client code.',
         icon: 'tabler:plug-connected',
       },
       {
@@ -160,6 +160,30 @@ const metadata = {
         icon: 'tabler:chart-bar',
       },
       {
+        title: 'Sandbox Execution',
+        description:
+          'Every code_interpreter call runs in a gVisor-isolated Kubernetes Pod with network deny-all. Managed by agent-sandbox CRDs with automatic pod pooling and cleanup.',
+        icon: 'tabler:container',
+      },
+      {
+        title: 'Code Interpreter',
+        description:
+          'Python code execution as a built-in tool. File I/O, package installation, image output. Runs in sandboxed pods with full lifecycle SSE events.',
+        icon: 'tabler:code',
+      },
+      {
+        title: 'Structured Output',
+        description:
+          'JSON and JSON Schema constrained decoding via text.format. Full schema passthrough to the backend. Works with any provider.',
+        icon: 'tabler:braces',
+      },
+      {
+        title: 'Native Responses API Backend',
+        description:
+          'Connect to vLLM via the Responses API wire format for native SSE events. No event synthesis needed. Coexists with Chat Completions providers.',
+        icon: 'tabler:arrows-exchange',
+      },
+      {
         title: 'Production Deployment',
         description:
           'Kustomize overlays for dev, production, and OpenShift. Health checks, graceful shutdown, and configurable resource limits.',
@@ -180,13 +204,6 @@ const metadata = {
     subtitle="The OpenClaw experience for the server, with Kubernetes-native security from the ground up."
     columns={3}
     items={[
-      {
-        title: 'Sandbox Execution',
-        description:
-          'Code runs in Kubernetes, not on your laptop. Every code_interpreter call executes in a gVisor-isolated Pod with network deny-all and audit logging.',
-        icon: 'tabler:container',
-        callToAction: { text: 'Coming Soon' },
-      },
       {
         title: 'Agent Profiles',
         description:
@@ -305,7 +322,7 @@ const metadata = {
           </tr>
           <tr class="border-b border-slate-700/50">
             <td class="py-2 px-4">Code execution sandbox</td>
-            <td class="py-2 px-4"><span class="text-cyan-400" title="Coming soon">&#128284; Coming soon</span></td>
+            <td class="py-2 px-4"><span class="text-green-400">&#10003; gVisor</span></td>
             <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
             <td class="py-2 px-4"><span class="text-red-400">&#10007; Off by default</span></td>
             <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
