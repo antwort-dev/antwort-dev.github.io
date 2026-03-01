@@ -5,10 +5,8 @@
         <img src="{{uiRootPath}}/img/favicon.svg" alt="Antwort" style="width: 28px; height: 28px;">
         <span style="font-weight: 700; font-size: 1.1rem;">Antwort</span>
       </a>
-      <div class="navbar-item search hide-for-print">
-        <div id="search-field" class="field">
-          <input id="search-input" type="text" placeholder="Search the docs"{{#if page.home}} autofocus{{/if}}>
-        </div>
+      <div class="navbar-item search hide-for-print" style="flex: 1; justify-content: flex-end;">
+        <div id="search"></div>
       </div>
       <button class="navbar-burger" data-target="topbar-nav">
         <span></span>

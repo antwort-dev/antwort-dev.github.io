@@ -12,11 +12,58 @@
   /* Doc content: 15% larger than default (17px -> 19.55px) */
   --doc-font-size: calc(1.0625em * 1.15);
   --doc-font-size--desktop: calc(19.55 / var(--rem-base) * 1rem);
+  /* Pagefind UI: light theme */
+  --pagefind-ui-scale: 0.7;
+  --pagefind-ui-primary: #00a88e;
+  --pagefind-ui-text: #333;
+  --pagefind-ui-background: #fff;
+  --pagefind-ui-border: #dbdbdb;
+  --pagefind-ui-border-width: 1px;
+  --pagefind-ui-border-radius: 4px;
+  --pagefind-ui-font: "Inter", -apple-system, system-ui, sans-serif;
 }
 
 /* ---- Theme toggle fix: <a> is inline by default, needs block to respect width/height ---- */
 .themeSwitch {
   display: inline-block;
+}
+
+/* ---- Pagefind: compact navbar integration ---- */
+.pagefind-ui {
+  width: 200px;
+}
+
+.pagefind-ui .pagefind-ui__search-input {
+  height: 1.8rem;
+  font-size: 0.85rem;
+  padding: 0 0.5em;
+}
+
+.pagefind-ui .pagefind-ui__search-clear {
+  height: 1.8rem;
+  width: 1.8rem;
+}
+
+/* Results dropdown: position absolute over content */
+.pagefind-ui .pagefind-ui__drawer {
+  position: absolute;
+  z-index: 100;
+  right: 0;
+  width: 500px;
+  max-height: 70vh;
+  overflow-y: auto;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  border-radius: 0 0 8px 8px;
+}
+
+@media screen and (max-width: 768px) {
+  .pagefind-ui {
+    width: 150px;
+  }
+
+  .pagefind-ui .pagefind-ui__drawer {
+    width: 90vw;
+  }
 }
 
 /* ---- Dark mode: reduced contrast with cool blue-gray tones ---- */
@@ -67,23 +114,26 @@
   /* Sidebar */
   --sidebar-background: #1c2230;
 
-  /* Navbar button (search input uses these for consistency) */
-  --navbar-button-background: var(--color-gray-10);
-  --navbar-button-border-color: var(--panel-border-color);
-  --navbar-button-font-color: var(--color-white-10);
+  /* Pagefind UI: dark theme */
+  --pagefind-ui-primary: #00e5c0;
+  --pagefind-ui-text: #a8b2c2;
+  --pagefind-ui-background: #1c2230;
+  --pagefind-ui-border: #2e3748;
 }
 
-/* ---- Search input: dark mode ---- */
-[data-theme="dark"] #search-input {
-  background-color: #1c2230;
-  color: #a8b2c2;
-  border-color: #2e3748;
+/* Dark mode: Pagefind results drawer */
+[data-theme="dark"] .pagefind-ui .pagefind-ui__drawer {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
-[data-theme="dark"] #search-input::placeholder {
-  color: #5a6a82;
+[data-theme="dark"] .pagefind-ui .pagefind-ui__result {
+  border-color: #232a38;
 }
 
-[data-theme="dark"] #search-input:focus {
-  border-color: #00e5c0;
+[data-theme="dark"] .pagefind-ui .pagefind-ui__result-link {
+  color: #00e5c0;
+}
+
+[data-theme="dark"] .pagefind-ui .pagefind-ui__result-excerpt {
+  color: #8090a8;
 }

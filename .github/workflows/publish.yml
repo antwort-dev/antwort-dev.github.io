@@ -35,12 +35,15 @@ jobs:
         run: npm run build
 
       - name: Install Antora
-        run: npm i antora @antora/lunr-extension
+        run: npm i antora
 
       - name: Build Antora docs
         run: npx antora --fetch antora-playbook.yml
         env:
           ANTORA_CACHE_DIR: .cache/antora
+
+      - name: Build Pagefind search index
+        run: npx -y pagefind --site dist
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
