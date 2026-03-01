@@ -14,6 +14,11 @@
   --doc-font-size--desktop: calc(19.55 / var(--rem-base) * 1rem);
 }
 
+/* ---- Theme toggle fix: <a> is inline by default, needs block to respect width/height ---- */
+.themeSwitch {
+  display: inline-block;
+}
+
 /* ---- Dark mode: reduced contrast with cool blue-gray tones ---- */
 [data-theme="dark"] {
   --body-font-family: "Inter", -apple-system, system-ui, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
