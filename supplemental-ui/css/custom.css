@@ -433,8 +433,50 @@ hr {
   color: #e0e6ed !important;
 }
 
+.header a:hover {
+  color: #00e5c0 !important;
+}
+
 .header .component-name {
   color: #e0e6ed !important;
+}
+
+.navbar {
+  background-color: #111a27 !important;
+}
+
+.navbar-brand a {
+  color: #e0e6ed !important;
+}
+
+.navbar-menu {
+  background-color: #111a27 !important;
+}
+
+.navbar-item {
+  color: #e0e6ed !important;
+}
+
+.navbar-item:hover {
+  color: #00e5c0 !important;
+  background-color: transparent !important;
+}
+
+.navbar-burger span {
+  background-color: #e0e6ed !important;
+}
+
+/* Search input in header */
+#search-input {
+  background-color: #0d1520 !important;
+  color: #e0e6ed !important;
+  border: 1px solid #1a2a3a !important;
+  border-radius: 4px;
+  padding: 4px 8px;
+}
+
+#search-input::placeholder {
+  color: #7a8a9a !important;
 }
 
 /* ----- Body Element Overrides ----- */
