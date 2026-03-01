@@ -1,15 +1,61 @@
-/* Antwort accent color overrides for countableSet/antora-ui bundle */
+/* Antwort custom overrides for countableSet/antora-ui bundle */
 /* The bundle handles light/dark mode via CSS custom properties and data-theme attribute. */
-/* We only override colors to match the Antwort teal (#00e5c0) branding. */
 
-/* Light mode accent overrides */
+/* ---- Font: Inter (variable, loaded from Google Fonts) ---- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&display=swap');
+
 :root {
+  --body-font-family: "Inter", -apple-system, system-ui, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+  /* Antwort teal accent for light mode */
   --link-font-color: #00a88e;
   --link_hover-font-color: #00c5a8;
 }
 
-/* Dark mode accent overrides */
+/* ---- Dark mode: reduced contrast with cool blue-gray tones ---- */
 [data-theme="dark"] {
+  --body-font-family: "Inter", -apple-system, system-ui, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+
+  /* Antwort teal accent */
   --link-font-color: #00e5c0;
   --link_hover-font-color: #33ebd0;
+
+  /* Background palette: cool dark navy (matching landing page direction) */
+  --color-body-bg: #0f1219;
+  --color-panel-bg: #161b24;
+  --color-pre-bg: #1a2030;
+  --color-pre-border: #2a3448;
+
+  /* Semantic grays: shifted from warm brown to cool blue-gray */
+  --color-jet-90: #0c0f15;
+  --color-jet-80: #0f1219;
+  --color-jet-70: #131720;
+  --color-jet-60: #161b24;
+  --color-jet-50: #1c2230;
+  --color-jet-30: #1c2230;
+  --color-gray-20: #232a38;
+  --color-gray-10: #2e3748;
+
+  /* Text: softer than pure white, cool silver-blue for reduced contrast */
+  --color-white-20: #c8d0dc;
+  --color-white-10: #a8b2c2;
+  --color-smoke-90: #8090a8;
+  --color-smoke-80: #7888a0;
+  --color-smoke-70: #5a6a82;
+  --color-smoke-60: #98a4b8;
+  --color-smoke-50: #a0acbe;
+  --color-smoke-40: #b0baca;
+
+  /* Headings: slightly brighter than body text */
+  --heading-font-color: #d0d8e4;
+
+  /* Panel borders */
+  --panel-border-color: #232a38;
+
+  /* Footer */
+  --footer-background: #1c2230;
+  --footer-font-color: #8090a8;
+  --footer-link-font-color: #a8b2c2;
+
+  /* Sidebar */
+  --sidebar-background: #1c2230;
 }
