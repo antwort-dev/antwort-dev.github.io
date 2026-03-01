@@ -1,12 +1,17 @@
 <script>
-// Sync theme with main Astro site via localStorage.
-// The main site at antwort-dev.github.io stores theme in localStorage.theme.
-// Since both sites share the same origin, we can read it directly.
+// Theme synchronization with main Astro site.
+// Both sites share localStorage.theme on the same origin (antwort-dev.github.io).
 // Default to dark if no preference is stored (main site defaults to dark).
 (function() {
-  var theme = localStorage.getItem('theme') || 'dark';
+  var theme = localStorage.getItem('theme');
+  if (!theme) {
+    // No stored preference: check system preference, default to dark
+    theme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+  }
   if (theme === 'dark') {
     document.documentElement.classList.add('dark');
+  } else {
+    document.documentElement.classList.remove('dark');
   }
 })();
 </script>
