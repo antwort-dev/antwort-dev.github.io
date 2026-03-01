@@ -46,32 +46,42 @@
   position: relative;
 }
 
-/* Compact input for navbar - keep left padding for the magnifying glass icon */
+/* Compact input for navbar */
 .pagefind-ui .pagefind-ui__search-input {
   height: 1.75rem !important;
   font-size: 0.8rem !important;
-  padding: 0 2rem 0 1.8rem !important;
+  padding: 0 1.5rem 0 1.6rem !important;
   border-radius: 4px !important;
-  background-size: 0.9rem !important;
-  background-position: 0.4rem center !important;
+}
+
+/* Reposition the magnifying glass icon (::before on form) */
+.pagefind-ui .pagefind-ui__form::before {
+  top: 0.4rem !important;
+  left: 0.4rem !important;
+  width: 0.85rem !important;
+  height: 0.85rem !important;
 }
 
 /* Fix the clear button */
 .pagefind-ui .pagefind-ui__search-clear {
   height: 1.75rem !important;
-  width: 1.75rem !important;
+  width: 1.5rem !important;
   top: 0 !important;
   right: 0 !important;
   font-size: 0 !important;
   padding: 0 !important;
   background: none !important;
   border: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
-.pagefind-ui .pagefind-ui__search-clear::before {
+.pagefind-ui .pagefind-ui__search-clear::after {
   content: "\00d7";
   font-size: 1rem;
   color: var(--pagefind-ui-text);
+  line-height: 1;
 }
 
 /* Results dropdown: floating overlay */
