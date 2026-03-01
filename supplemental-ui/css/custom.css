@@ -9,6 +9,9 @@
   /* Antwort teal accent for light mode */
   --link-font-color: #00a88e;
   --link_hover-font-color: #00c5a8;
+  /* Doc content: 15% larger than default (17px -> 19.55px) */
+  --doc-font-size: calc(1.0625em * 1.15);
+  --doc-font-size--desktop: calc(19.55 / var(--rem-base) * 1rem);
 }
 
 /* ---- Dark mode: reduced contrast with cool blue-gray tones ---- */
