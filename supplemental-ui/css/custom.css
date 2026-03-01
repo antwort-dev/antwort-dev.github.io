@@ -46,12 +46,14 @@
   position: relative;
 }
 
-/* Compact input for navbar */
+/* Compact input for navbar - keep left padding for the magnifying glass icon */
 .pagefind-ui .pagefind-ui__search-input {
   height: 1.75rem !important;
   font-size: 0.8rem !important;
-  padding: 0 2rem 0 0.5rem !important;
+  padding: 0 2rem 0 1.8rem !important;
   border-radius: 4px !important;
+  background-size: 0.9rem !important;
+  background-position: 0.4rem center !important;
 }
 
 /* Fix the clear button */
@@ -218,23 +220,42 @@
   color: #8090a8;
 }
 
-/* Dark mode: results dropdown */
+/* Dark mode: results dropdown - fully opaque, lifted surface */
 [data-theme="dark"] .pagefind-ui .pagefind-ui__drawer {
-  background: #161b24 !important;
-  border-color: #2e3748;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  background: #1c2230 !important;
+  border-color: #2e3748 !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.7) !important;
 }
 
 [data-theme="dark"] .pagefind-ui .pagefind-ui__result {
-  border-color: #232a38;
+  border-color: #2e3748 !important;
 }
 
 [data-theme="dark"] .pagefind-ui .pagefind-ui__result-link {
-  color: #00e5c0;
+  color: #00e5c0 !important;
+}
+
+[data-theme="dark"] .pagefind-ui .pagefind-ui__result-title {
+  color: #c8d0dc !important;
+  font-weight: 600;
 }
 
 [data-theme="dark"] .pagefind-ui .pagefind-ui__result-excerpt {
-  color: #8090a8;
+  color: #98a4b8 !important;
+}
+
+/* Dark mode: message text */
+[data-theme="dark"] .pagefind-ui .pagefind-ui__message {
+  color: #8090a8 !important;
+}
+
+/* Dark mode: sub-result entries */
+[data-theme="dark"] .pagefind-ui .pagefind-ui__result-nested {
+  border-color: #232a38 !important;
+}
+
+[data-theme="dark"] .pagefind-ui .pagefind-ui__result-nested .pagefind-ui__result-link {
+  color: #a0acbe !important;
 }
 
 /* Dark mode: highlights */
