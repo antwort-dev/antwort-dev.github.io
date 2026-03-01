@@ -60,6 +60,6 @@ export const footerData = {
     { ariaLabel: 'GitHub', icon: 'tabler:brand-github', href: 'https://github.com/antwort-dev/antwort' },
   ],
   footNote: `
-    <a class="text-accent underline" href="https://github.com/antwort-dev/antwort">Antwort</a> &middot; Apache 2.0 License &middot; Made with Astro
+    Created with <a class="text-accent underline" href="https://github.com/rhuss/cc-sdd">Spec-Driven Development</a> and Claude. Assisted with <span style="color: #e25555;">&hearts;</span> by <a class="text-accent underline" href="https://github.com/rhuss">Roland Hu&szlig;</a>
   `,
 };
