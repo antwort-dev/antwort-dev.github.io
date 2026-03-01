@@ -66,4 +66,24 @@
 
   /* Sidebar */
   --sidebar-background: #1c2230;
+
+  /* Navbar button (search input uses these for consistency) */
+  --navbar-button-background: var(--color-gray-10);
+  --navbar-button-border-color: var(--panel-border-color);
+  --navbar-button-font-color: var(--color-white-10);
+}
+
+/* ---- Search input: dark mode ---- */
+[data-theme="dark"] #search-input {
+  background-color: #1c2230;
+  color: #a8b2c2;
+  border-color: #2e3748;
+}
+
+[data-theme="dark"] #search-input::placeholder {
+  color: #5a6a82;
+}
+
+[data-theme="dark"] #search-input:focus {
+  border-color: #00e5c0;
 }
