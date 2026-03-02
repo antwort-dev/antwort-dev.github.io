@@ -19,7 +19,7 @@ export const headerData = {
   actions: [
     {
       text: 'Get Started',
-      href: '/docs/antwort/0.1/getting-started.html',
+      href: getPermalink('/#get-started'),
       variant: 'primary',
     },
   ],
@@ -32,7 +32,7 @@ export const footerData = {
       links: [
         { text: 'Features', href: getPermalink('/#features') },
         { text: 'Documentation', href: '/docs/' },
-        { text: 'Getting Started', href: '/docs/antwort/0.1/getting-started.html' },
+        { text: 'Getting Started', href: getPermalink('/#get-started') },
       ],
     },
     {
@@ -47,15 +47,10 @@ export const footerData = {
       title: 'Legal',
       links: [
         { text: 'Apache 2.0 License', href: 'https://github.com/antwort-dev/antwort/blob/main/LICENSE' },
-        { text: 'Terms', href: getPermalink('/terms') },
-        { text: 'Privacy Policy', href: getPermalink('/privacy') },
       ],
     },
   ],
-  secondaryLinks: [
-    { text: 'Terms', href: getPermalink('/terms') },
-    { text: 'Privacy Policy', href: getPermalink('/privacy') },
-  ],
+  secondaryLinks: [],
   socialLinks: [
     { ariaLabel: 'GitHub', icon: 'tabler:brand-github', href: 'https://github.com/antwort-dev/antwort' },
   ],
