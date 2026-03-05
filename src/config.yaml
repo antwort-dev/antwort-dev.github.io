@@ -9,7 +9,7 @@ metadata:
   title:
     default: Antwort
     template: '%s | Antwort'
-  description: 'The server-side agentic framework. Open-source OpenResponses API implementation for production Kubernetes environments.'
+  description: 'The inference gateway for agentic AI. Open-source OpenResponses API gateway for autonomous agents on Kubernetes.'
   robots:
     index: true
     follow: true

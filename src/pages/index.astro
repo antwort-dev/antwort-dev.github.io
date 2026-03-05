@@ -9,7 +9,7 @@ import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
 import Headline from '~/components/ui/Headline.astro';
 
 const metadata = {
-  title: 'Antwort - The server-side agentic framework',
+  title: 'Antwort - The inference gateway for agentic AI',
   ignoreTitleTemplate: true,
 };
 ---
@@ -35,11 +35,11 @@ const metadata = {
     ]}
   >
     <Fragment slot="title">
-      Antwort<br /><span class="text-accent">The server-side agentic framework.</span>
+      Antwort<br /><span class="text-accent">The inference gateway for agentic AI.</span>
     </Fragment>
 
     <Fragment slot="subtitle">
-      Think OpenClaw, but running securely on the server. The most complete open-source OpenResponses API implementation for production Kubernetes. Sandboxed code execution. Multi-user. Any OpenAI SDK works.
+      The inference layer that autonomous agents call for LLM reasoning, tool execution, and memory. OpenResponses API gateway for production Kubernetes. Multi-tenant security. Any OpenAI SDK works.
     </Fragment>
 
     <Fragment slot="image">
@@ -67,13 +67,13 @@ const metadata = {
   <Features
     id="pillars"
     tagline="Why Antwort"
-    title="Built for production AI agents"
+    title="Built for autonomous agents"
     columns={2}
     items={[
       {
         title: 'OpenResponses API',
         description:
-          'The most complete open-source server-side implementation of the OpenResponses standard, covering both stateful and stateless workloads. Any OpenAI SDK (Python, Node, Go, Rust) works without modification.',
+          'The most complete open-source OpenResponses API gateway. Your agents call the same API they use with OpenAI, but through your own infrastructure. Any OpenAI SDK (Python, Node, Go, Rust) works without modification.',
         icon: 'tabler:api',
       },
       {
@@ -200,49 +200,49 @@ const metadata = {
 
   <Features
     tagline="Roadmap"
-    title="What we are building"
-    subtitle="The OpenClaw experience for the server, with Kubernetes-native security from the ground up."
+    title="What's next"
+    subtitle="Making Antwort the best inference backend for long-running autonomous agents."
     columns={3}
     items={[
       {
-        title: 'Agent Profiles',
+        title: 'Async Responses',
         description:
-          'Server-side SOUL.md. Reusable agent configurations with instructions, tools, model preferences, and sandbox policies. Manage agents centrally.',
-        icon: 'tabler:user-cog',
+          'Background mode for long-running agent requests. POST with background: true, poll for completion, or receive a webhook callback. Essential for agents that reason for minutes.',
+        icon: 'tabler:clock',
         callToAction: { text: 'Coming Soon' },
       },
       {
-        title: 'RAG & Knowledge',
+        title: 'Conversation Branching',
         description:
-          'Pluggable vector stores and embedding providers with file_search as a built-in tool. Document ingestion pipeline with chunking and indexing. Give your agent a knowledge base.',
-        icon: 'tabler:books',
+          'Non-linear conversation memory for agents that explore multiple approaches. Branch, backtrack, and merge conversation histories. Summarization hooks for long sessions.',
+        icon: 'tabler:git-branch',
         callToAction: { text: 'Coming Soon' },
       },
       {
-        title: 'Ambient Agents',
+        title: 'Dynamic Tool Registry',
         description:
-          'External triggers via webhooks, cron schedules, and completion hooks. Your agent reacts to events, scans alerts at 3am, and files tickets before you wake up.',
-        icon: 'tabler:antenna-bars-5',
-        callToAction: { text: 'Coming Soon' },
-      },
-      {
-        title: 'Delivery Channels',
-        description:
-          'Push agent output to Slack, Teams, email, or webhooks. Combined with scheduling, agents become autonomous workers.',
-        icon: 'tabler:send',
-        callToAction: { text: 'Coming Soon' },
-      },
-      {
-        title: 'Tool Registry',
-        description:
-          'Curated, security-audited tool catalog with per-tenant permissions. MCP servers registered with allowlists and audit trails.',
+          'Runtime tool discovery and registration. Agents declare their own tools. Per-tenant permissions and audit trails for tool usage.',
         icon: 'tabler:archive',
+        callToAction: { text: 'Coming Soon' },
+      },
+      {
+        title: 'Guardrails',
+        description:
+          'Content safety and policy enforcement. Input/output filtering with pluggable safety models. Essential for autonomous agents operating without human oversight.',
+        icon: 'tabler:shield-check',
+        callToAction: { text: 'Coming Soon' },
+      },
+      {
+        title: 'Usage Quotas',
+        description:
+          'Per-agent token budgets and rate limits. Prevent runaway agents from consuming unlimited resources. Cost controls for multi-agent deployments.',
+        icon: 'tabler:gauge',
         callToAction: { text: 'Coming Soon' },
       },
       {
         title: 'Kubernetes Operator',
         description:
-          'A dedicated operator for seamless installation and lifecycle management. Declarative CRDs for agent configurations, sandbox policies, and multi-user deployments.',
+          'Declarative CRDs for Antwort configuration, agent profiles, and multi-tenant deployments. Seamless lifecycle management.',
         icon: 'tabler:settings-automation',
         callToAction: { text: 'Coming Soon' },
       },
@@ -255,7 +255,7 @@ const metadata = {
     <Headline
       tagline="How It Compares"
       title="Feature comparison"
-      subtitle="See how Antwort stacks up against other agentic AI platforms."
+      subtitle="See how Antwort compares as an inference backend for autonomous agents."
     />
     <div class="overflow-x-auto">
       <table class="w-full text-sm text-left border-collapse">
@@ -329,7 +329,7 @@ const metadata = {
           </tr>
           <tr class="border-b border-slate-700/50">
             <td class="py-2 px-4">RAG / file_search</td>
-            <td class="py-2 px-4"><span class="text-cyan-400" title="Coming soon">&#128284; Coming soon</span></td>
+            <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
             <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
             <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
             <td class="py-2 px-4"><span class="text-amber-400">&#128295;</span></td>
@@ -449,7 +449,7 @@ const metadata = {
     ]}
   >
     <Fragment slot="title">
-      Ready to deploy agentic AI?
+      Ready to give your agents a production inference backend?
     </Fragment>
 
     <Fragment slot="subtitle">
