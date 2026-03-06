@@ -138,13 +138,19 @@ const metadata = {
       {
         title: 'Conversation Memory',
         description:
-          'Pluggable conversation persistence with response chaining. Full history reconstruction across multi-turn interactions. PostgreSQL included, with a clean interface for custom backends.',
+          'Pluggable conversation persistence with response chaining. List, browse, and inspect stored responses with pagination and filtering. PostgreSQL included, with a clean interface for custom backends.',
         icon: 'tabler:database',
+      },
+      {
+        title: 'Reasoning Streaming',
+        description:
+          'Watch reasoning models think in real time. Chain-of-thought tokens stream as they are generated, so clients can show a live "thinking" view before the final answer arrives. Works with DeepSeek R1, Qwen QwQ, and other reasoning-capable models.',
+        icon: 'tabler:brain',
       },
       {
         title: 'SSE Streaming',
         description:
-          'Server-Sent Events with proper lifecycle events. Watch your agent think, call tools, and respond in real time.',
+          'Server-Sent Events with full lifecycle coverage. Reasoning deltas, tool call progress, terminal states (completed, incomplete, failed), and response text, each with its own event type for fine-grained UI updates.',
         icon: 'tabler:live-photo',
       },
       {
@@ -255,7 +261,7 @@ const metadata = {
     <Headline
       tagline="How It Compares"
       title="Feature comparison"
-      subtitle="See how Antwort compares as an inference backend for autonomous agents."
+      subtitle="See how Antwort compares against other OpenResponses API platforms."
     />
     <div class="overflow-x-auto">
       <table class="w-full text-sm text-left border-collapse">
@@ -264,51 +270,45 @@ const metadata = {
             <th class="py-3 px-4 font-semibold text-muted"></th>
             <th class="py-3 px-4 font-bold text-accent">Antwort</th>
             <th class="py-3 px-4 font-semibold">LlamaStack</th>
-            <th class="py-3 px-4 font-semibold">OpenClaw</th>
-            <th class="py-3 px-4 font-semibold">LangGraph Platform</th>
+            <th class="py-3 px-4 font-semibold">Open Responses</th>
           </tr>
         </thead>
         <tbody>
           <!-- API & Protocol -->
           <tr>
-            <td colspan="5" class="pt-6 pb-2 px-4 font-bold text-xs uppercase tracking-wider text-muted">API & Protocol</td>
+            <td colspan="4" class="pt-6 pb-2 px-4 font-bold text-xs uppercase tracking-wider text-muted">API & Protocol</td>
           </tr>
           <tr class="border-b border-slate-700/50">
             <td class="py-2 px-4">Responses API</td>
             <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
             <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
-            <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
-            <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
+            <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
           </tr>
           <tr class="border-b border-slate-700/50">
             <td class="py-2 px-4">Chat Completions</td>
             <td class="py-2 px-4"><span class="text-green-400">&#10003; Via provider</span></td>
             <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
             <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
-            <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
           </tr>
           <tr class="border-b border-slate-700/50">
             <td class="py-2 px-4">OpenAI SDK compatible</td>
             <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
             <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
-            <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
-            <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
+            <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
           </tr>
           <tr class="border-b border-slate-700/50">
             <td class="py-2 px-4">Streaming (SSE)</td>
             <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
             <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
-            <td class="py-2 px-4"><span class="text-green-400">&#10003; WebSocket</span></td>
             <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
           </tr>
 
           <!-- Agentic Capabilities -->
           <tr>
-            <td colspan="5" class="pt-6 pb-2 px-4 font-bold text-xs uppercase tracking-wider text-muted">Agentic Capabilities</td>
+            <td colspan="4" class="pt-6 pb-2 px-4 font-bold text-xs uppercase tracking-wider text-muted">Agentic Capabilities</td>
           </tr>
           <tr class="border-b border-slate-700/50">
             <td class="py-2 px-4">Agentic loop</td>
-            <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
             <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
             <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
             <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
@@ -317,14 +317,18 @@ const metadata = {
             <td class="py-2 px-4">MCP tools</td>
             <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
             <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
-            <td class="py-2 px-4"><span class="text-amber-400">&#128295; Bridge</span></td>
-            <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
+            <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
           </tr>
           <tr class="border-b border-slate-700/50">
             <td class="py-2 px-4">Code execution sandbox</td>
             <td class="py-2 px-4"><span class="text-green-400">&#10003; gVisor</span></td>
+            <td class="py-2 px-4"><span class="text-amber-400">&#128295; No isolation</span></td>
             <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
-            <td class="py-2 px-4"><span class="text-red-400">&#10007; Off by default</span></td>
+          </tr>
+          <tr class="border-b border-slate-700/50">
+            <td class="py-2 px-4">Reasoning streaming</td>
+            <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
+            <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
             <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
           </tr>
           <tr class="border-b border-slate-700/50">
@@ -332,32 +336,28 @@ const metadata = {
             <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
             <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
             <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
-            <td class="py-2 px-4"><span class="text-amber-400">&#128295;</span></td>
           </tr>
           <tr class="border-b border-slate-700/50">
             <td class="py-2 px-4">Safety / guardrails</td>
             <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
             <td class="py-2 px-4"><span class="text-green-400">&#10003; Llama Guard</span></td>
             <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
-            <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
           </tr>
 
           <!-- Security & Operations -->
           <tr>
-            <td colspan="5" class="pt-6 pb-2 px-4 font-bold text-xs uppercase tracking-wider text-muted">Security & Operations</td>
+            <td colspan="4" class="pt-6 pb-2 px-4 font-bold text-xs uppercase tracking-wider text-muted">Security & Operations</td>
           </tr>
           <tr class="border-b border-slate-700/50">
             <td class="py-2 px-4">Sandbox by default</td>
             <td class="py-2 px-4"><span class="text-green-400">&#10003; Always</span></td>
             <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
-            <td class="py-2 px-4"><span class="text-red-400">&#10007; Off</span></td>
             <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
           </tr>
           <tr class="border-b border-slate-700/50">
             <td class="py-2 px-4">Multi-user</td>
             <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
-            <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
-            <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
+            <td class="py-2 px-4"><span class="text-green-400">&#10003; OAuth2</span></td>
             <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
           </tr>
           <tr class="border-b border-slate-700/50">
@@ -365,34 +365,30 @@ const metadata = {
             <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
             <td class="py-2 px-4"><span class="text-green-400">&#10003; Operator</span></td>
             <td class="py-2 px-4"><span class="text-red-400">&#10007; Docker</span></td>
-            <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
           </tr>
           <tr class="border-b border-slate-700/50">
             <td class="py-2 px-4">Observability</td>
             <td class="py-2 px-4"><span class="text-green-400">&#10003; Prometheus</span></td>
-            <td class="py-2 px-4"><span class="text-amber-400">&#128295;</span></td>
+            <td class="py-2 px-4"><span class="text-green-400">&#10003; OpenTelemetry</span></td>
             <td class="py-2 px-4"><span class="text-red-400">&#10007;</span></td>
-            <td class="py-2 px-4"><span class="text-green-400">&#10003; LangSmith</span></td>
           </tr>
           <tr class="border-b border-slate-700/50">
             <td class="py-2 px-4">Provider agnostic</td>
             <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
             <td class="py-2 px-4"><span class="text-green-400">&#10003; 15+</span></td>
             <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
-            <td class="py-2 px-4"><span class="text-red-400">&#10007; LangChain</span></td>
           </tr>
           <tr class="border-b border-slate-700/50">
             <td class="py-2 px-4">Open source</td>
             <td class="py-2 px-4"><span class="text-green-400">&#10003; Apache 2.0</span></td>
-            <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
-            <td class="py-2 px-4"><span class="text-green-400">&#10003;</span></td>
-            <td class="py-2 px-4"><span class="text-red-400">&#10007; Commercial*</span></td>
+            <td class="py-2 px-4"><span class="text-green-400">&#10003; MIT</span></td>
+            <td class="py-2 px-4"><span class="text-green-400">&#10003; Apache 2.0</span></td>
           </tr>
         </tbody>
       </table>
     </div>
     <p class="text-xs text-muted mt-4 px-4">
-      * LangGraph library is MIT; LangGraph Platform requires a commercial license for self-hosting. Last updated: February 2026.
+      Last updated: March 2026.
     </p>
   </WidgetWrapper>
 
