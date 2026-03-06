@@ -190,6 +190,12 @@ const metadata = {
         icon: 'tabler:arrows-exchange',
       },
       {
+        title: 'Async Responses',
+        description:
+          'Background mode for long-running agent requests. POST with background: true, poll for completion. Gateway and worker scale independently. Essential for agents that reason for minutes.',
+        icon: 'tabler:clock',
+      },
+      {
         title: 'Production Deployment',
         description:
           'Kustomize overlays for dev, production, and OpenShift. Health checks, graceful shutdown, and configurable resource limits.',
@@ -210,13 +216,6 @@ const metadata = {
     subtitle="Making Antwort the best inference backend for long-running autonomous agents."
     columns={3}
     items={[
-      {
-        title: 'Async Responses',
-        description:
-          'Background mode for long-running agent requests. POST with background: true, poll for completion, or receive a webhook callback. Essential for agents that reason for minutes.',
-        icon: 'tabler:clock',
-        callToAction: { text: 'Coming Soon' },
-      },
       {
         title: 'Conversation Branching',
         description:
